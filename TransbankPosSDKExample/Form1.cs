@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Transbank.POS;
-using Transbank.POS.Wrapper;
+using Transbank.POS.Utils;
 namespace TransbankPosSDKExample
 {
     public partial class Form1 : Form
@@ -21,10 +14,12 @@ namespace TransbankPosSDKExample
         {
             CenterToScreen();
             InitializeComponent();
+
             portName_lbl.Text = portName;
-            port_ddown.SelectedIndex = 0;
+            port_ddown.DataSource = Serial.ListPorts();
             portName = port_ddown.SelectedItem.ToString();
             total_price_lbl.Text = total.ToString();
+
             pos = new POS();
         }
 
@@ -45,7 +40,7 @@ namespace TransbankPosSDKExample
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            portName = port_ddown.SelectedText;
+            portName = port_ddown.SelectedItem.ToString();
         }
 
         private void pollingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,14 +57,14 @@ namespace TransbankPosSDKExample
 
         private void connect_btn_Click(object sender, EventArgs e)
         {
-            pos.OpenPort(portName, tbk_baudrate.TBK_115200);
-            portName_lbl.Text = portName = TransbankWrap.get_configured_port_name();
+            pos.OpenPort(portName, TbkBaudrate.TBK_115200);
+            portName_lbl.Text = portName;
         }
 
         private void disconnect_btn_Click(object sender, EventArgs e)
         {
             TransbankWrap.close_port();
-            portName_lbl.Text = portName = "";
+            portName_lbl.Text = "";
         }
     }
 }
