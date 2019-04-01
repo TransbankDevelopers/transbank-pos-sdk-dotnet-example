@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using Transbank.POS;
 using Transbank.POS.Utils;
+using Transbank.POS.Responses;
+
 namespace TransbankPosSDKExample
 {
     public partial class Form1 : Form
@@ -21,21 +23,6 @@ namespace TransbankPosSDKExample
             total_price_lbl.Text = total.ToString();
 
             pos = new POS();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,8 +50,19 @@ namespace TransbankPosSDKExample
 
         private void disconnect_btn_Click(object sender, EventArgs e)
         {
-            TransbankWrap.close_port();
+            pos.ClosePort();
             portName_lbl.Text = "";
+        }
+
+        private void loadKeysToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+             LoadKeysResponse rsp = pos.LoadKeys();
+            if (rsp.Sucess)
+            {
+                MessageBox.Show("Commerce Code \t: " + rsp.CommerceCode + "\n" +
+                                "Terminal Id \t: " + rsp.TerminalId + "\n" +
+                                "Result \t\t: " + rsp.Result + "\n", "Keys Loaded Successfully.");
+            }
         }
     }
 }

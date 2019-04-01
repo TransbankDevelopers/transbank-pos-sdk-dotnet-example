@@ -53,6 +53,7 @@
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pollingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnect_btn = new System.Windows.Forms.Button();
+            this.loadKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.cofee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.juice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cookies)).BeginInit();
@@ -78,7 +79,6 @@
             this.cofee.Size = new System.Drawing.Size(142, 94);
             this.cofee.TabIndex = 0;
             this.cofee.TabStop = false;
-            this.cofee.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // juice
             // 
@@ -197,7 +197,6 @@
             this.connectedPort_lbl.Size = new System.Drawing.Size(84, 13);
             this.connectedPort_lbl.TabIndex = 12;
             this.connectedPort_lbl.Text = "Connected Port:";
-            this.connectedPort_lbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -284,16 +283,17 @@
             // connectionToolStripMenuItem
             // 
             this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pollingToolStripMenuItem});
+            this.pollingToolStripMenuItem,
+            this.loadKeysToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.connectionToolStripMenuItem.Text = "Connection";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.connectionToolStripMenuItem.Text = "POS";
             // 
             // pollingToolStripMenuItem
             // 
             this.pollingToolStripMenuItem.Name = "pollingToolStripMenuItem";
-            this.pollingToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.pollingToolStripMenuItem.Text = "Polling";
+            this.pollingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pollingToolStripMenuItem.Text = "Check Connection";
             this.pollingToolStripMenuItem.Click += new System.EventHandler(this.pollingToolStripMenuItem_Click);
             // 
             // disconnect_btn
@@ -305,6 +305,13 @@
             this.disconnect_btn.Text = "Disconnect";
             this.disconnect_btn.UseVisualStyleBackColor = true;
             this.disconnect_btn.Click += new System.EventHandler(this.disconnect_btn_Click);
+            // 
+            // loadKeysToolStripMenuItem
+            // 
+            this.loadKeysToolStripMenuItem.Name = "loadKeysToolStripMenuItem";
+            this.loadKeysToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadKeysToolStripMenuItem.Text = "Load Keys";
+            this.loadKeysToolStripMenuItem.Click += new System.EventHandler(this.loadKeysToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -374,7 +381,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pollingToolStripMenuItem;
-        
+        private System.Windows.Forms.ToolStripMenuItem loadKeysToolStripMenuItem;
     }
 }
 
