@@ -64,5 +64,16 @@ namespace TransbankPosSDKExample
                                 "Result \t\t: " + rsp.Result + "\n", "Keys Loaded Successfully.");
             }
         }
+
+        private void registerCloseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegisterCloseResponse rsp = pos.RegisterClose();
+            if (rsp.Sucess)
+            {
+                MessageBox.Show("Commerce Code \t: " + rsp.CommerceCode + "\n" +
+                                "Terminal Id \t: " + rsp.TerminalId + "\n" +
+                                "Result \t\t: " + rsp.Result + "\n", "Keys Loaded Successfully.");
+            }
+        }
     }
 }
