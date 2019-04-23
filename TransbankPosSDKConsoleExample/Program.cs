@@ -31,7 +31,7 @@ namespace TransbankPosSDKConsoleExample
             }
 
             POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
-            Console.WriteLine("\nSerial Port succesfuly opend");
+            Console.WriteLine("\nSerial port opened successfully");
             Console.WriteLine("Showing Menu");
             ConsoleKeyInfo key = ShowMenu();
             Console.WriteLine("\n");

@@ -1,307 +1,245 @@
 ﻿using System;
 using System.Windows.Forms;
 using Transbank.POS;
+using Transbank.POS.Exceptions;
 using Transbank.POS.Utils;
 using Transbank.POS.Responses;
 using System.Collections.Generic;
 
 namespace TransbankPosSDKExample
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private string portName = "";
         private int total = 0;
         private List<Product> buyItems;
 
-        public Form1()
+        private List<Product> internalItems = new List<Product>()
+        {
+            new Product { Name = "Café", Price = 1500},
+            new Product { Name = "Jugo", Price = 2500},
+            new Product { Name = "Galletas", Price = 1000},
+            new Product { Name = "Helado", Price = 2150},
+            new Product { Name = "Donut", Price = 1500},
+            new Product { Name = "Pizza", Price = 8650},
+            new Product { Name = "Ensalada", Price = 8674},
+            new Product { Name = "Hamburguesa", Price = 9860},
+            new Product { Name = "Papitas", Price = 3600}
+        };
+        
+        public MainForm()
         {
             CenterToScreen();
             InitializeComponent();
 
-            portName_lbl.Text = portName;
-            port_ddown.DataSource = Serial.ListPorts();
-            portName = port_ddown.SelectedItem.ToString();
-            total_price_lbl.Text = total.ToString();
+            PortName_lbl.Text = portName;
+            Port_ddown.DataSource = Serial.ListPorts();
+            portName = Port_ddown.SelectedItem.ToString();
+            Price_lbl.Text = total.ToString();
             buyItems = new List<Product>();
         }
 
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void PortDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            portName = port_ddown.SelectedItem.ToString();
+            portName = Port_ddown.SelectedItem.ToString();
         }
 
         private void PollingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (POS.Instance.Polling())
+            try
             {
-                MessageBox.Show("POS is connected.", "Polling the POS");
-            }
-            else
+                if (POS.Instance.Polling())
+                {
+                    MessageBox.Show("POS is connected.", "Polling the POS");
+                }
+                else
+                {
+                    MessageBox.Show("POS is NOT connected.", "Polling the POS");
+                }
+            } catch (TransbankException a)
             {
-                MessageBox.Show("POS is NOT connected.", "Polling the POS");
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Connect_btn_Click(object sender, EventArgs e)
         {
-            POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
-            portName_lbl.Text = portName;
+            try
+            {
+                POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
+                PortName_lbl.Text = portName;
+            } catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Disconnect_btn_Click(object sender, EventArgs e)
         {
-            POS.Instance.ClosePort();
-            portName_lbl.Text = "";
+            try
+            {
+                POS.Instance.ClosePort();
+                PortName_lbl.Text = "";
+            } catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadKeysToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             LoadKeysResponse rsp = POS.Instance.LoadKeys();
-            if (rsp.Success)
+            try
             {
-                MessageBox.Show("Commerce Code \t: " + rsp.CommerceCode + "\n" +
-                                "Terminal Id \t: " + rsp.TerminalId + "\n" +
-                                "Result \t\t: " + rsp.ResponseMessage + "\n", "Keys Loaded Successfully.");
+                LoadKeysResponse response = POS.Instance.LoadKeys();
+                if (response.Success)
+                {
+                    MessageBox.Show(response.ToString(), "Keys Loaded Successfully.");
+                }
+            } catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void RegisterCloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegisterCloseResponse response = POS.Instance.RegisterClose();
-            if (response.Success)
+            try {
+                RegisterCloseResponse response = POS.Instance.RegisterClose();
+                if (response.Success)
+                {
+                    MessageBox.Show(response.ToString(), "Keys Loaded Successfully.");
+                }
+            }
+            catch (TransbankException a)
             {
-                MessageBox.Show("Commerce Code \t: " + response.CommerceCode + "\n" +
-                                "Terminal Id \t: " + response.TerminalId + "\n" +
-                                "Result \t\t: " + response.ResponseMessage + "\n", "Keys Loaded Successfully.");
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void SetNormalModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Setting Normal Mode will disconect the POS\n Are You sure?", "Set Normal Mode", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                POS.Instance.SetNormalMode();
-                Disconnect_btn_Click(sender, e);
+                DialogResult dialogResult = MessageBox.Show("Setting Normal Mode will disconect the POS\n Are You sure?", "Set Normal Mode", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    POS.Instance.SetNormalMode();
+                    Disconnect_btn_Click(sender, e);
+                }
+            } catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void AddItemToShoppingCart(Product product)
+        {
+            ListViewItem item = new ListViewItem(product.Row)
+            {
+                Tag = product
+            };
+            ShopingList_lst.Items.Add(item);
+
+            total += product.Price;
+            Price_lbl.Text = total.ToString();
+            Price_lbl.Refresh();
         }
 
         private void Cofee_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Café",
-                Price = 3000
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Café"));
         }
 
         private void Juice_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Jugo",
-                Price = 2500
-            };
 
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Jugo"));
         }
 
         private void Cookies_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Galletas",
-                Price = 1000
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Galletas"));
         }
 
         private void Icecream_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Helado",
-                Price = 2150
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Helado"));
         }
 
         private void Pizza_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Pizza",
-                Price = 8650
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Pizza"));
         }
 
         private void Donut_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Dona",
-                Price = 1500
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Donut"));
         }
 
         private void Burger_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Hamburguesa",
-                Price = 9860
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Hamburguesa"));
         }
 
         private void Salad_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Ensalada",
-                Price = 8674
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Ensalada"));
         }
 
         private void Fries_Click(object sender, EventArgs e)
         {
-            Product p = new Product
-            {
-                Name = "Papas fritas",
-                Price = 3600
-            };
-
-            ListViewItem item = new ListViewItem(p.Row)
-            {
-                Tag = p
-            };
-            CarroCompraList.Items.Add(item);
-
-            total += p.Price;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            AddItemToShoppingCart(internalItems.Find(product => product.Name == "Papitas"));
         }
 
         private void CarroCompraList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListView.SelectedListViewItemCollection remove = CarroCompraList.SelectedItems;
+            ListView.SelectedListViewItemCollection remove = ShopingList_lst.SelectedItems;
 
             foreach (ListViewItem item in remove)
             {
                 total -= ((Product)item.Tag).Price;
-                CarroCompraList.Items.Remove(item);
+                ShopingList_lst.Items.Remove(item);
 
-                total_price_lbl.Text = total.ToString();
-                total_price_lbl.Refresh();
+                Price_lbl.Text = total.ToString();
+                Price_lbl.Refresh();
             }
         }
 
         private void Clean_btn_Click(object sender, EventArgs e)
         {
-            CarroCompraList.Items.Clear();
+            ShopingList_lst.Items.Clear();
             total = 0;
-            total_price_lbl.Text = total.ToString();
-            total_price_lbl.Refresh();
+            Price_lbl.Text = total.ToString();
+            Price_lbl.Refresh();
         }
 
         private void Pay_btn_Click(object sender, EventArgs e)
         {
-            if (total > 0 && CarroCompraList.Items.Count > 0)
-            {
-                int ticket = new Random().Next(1, 999999);
-                SaleResponse response = POS.Instance.Sale(total, ticket);
-
-                if (response.Success)
+            try{
+                if (total > 0 && ShopingList_lst.Items.Count > 0)
                 {
-                    MessageBox.Show(response.ToString());
-                    Clean_btn_Click(sender, e);
+                    int ticket = new Random().Next(1, 999999);
+                    SaleResponse response = POS.Instance.Sale(total, ticket);
+
+                    if (response.Success)
+                    {
+                        MessageBox.Show(response.ToString());
+                        Clean_btn_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Procesando el Pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Error Procesando el Pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No hay elementos para cobrar o el total es 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-            }
-            else
+            } catch (TransbankException a)
             {
-                MessageBox.Show("No hay elementos para cobrar o el total es 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }
