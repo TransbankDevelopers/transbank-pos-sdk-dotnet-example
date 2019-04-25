@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cofee.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Cofee_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4RNiRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -331,7 +331,7 @@
         S7hO4KJUBEN9U6JUvbAGl+J//9k=
 </value>
   </data>
-  <data name="juice.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Juice_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4RHmRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -534,7 +534,7 @@
         UvsB6jAtt88SjrHuUgR9S8LYXwzypSADP//Z
 </value>
   </data>
-  <data name="cookies.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Cookies_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4RWWRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -788,7 +788,7 @@
         RL6/LOowoQMkbb2Hjj7yadSV2TEl7lQ9TigszkJte2DP/9k=
 </value>
   </data>
-  <data name="icecream.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Icecream_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4SpSRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -1179,7 +1179,7 @@
         S6GuVNCcghYlHhzuZ28Ammx5+8AaMjqbrsQ01mh8QNkD57zkIL7j17mM5gQ8tVz/2Q==
 </value>
   </data>
-  <data name="pizza.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Pizza_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4S2QRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -1599,7 +1599,7 @@
         eVO4dbQY3ppJ5aYXvSjAioOuOFTeaIG5ENQjORd61moLSMSrQ2t7hL6yuRBFpS6IQ374fWf/2Q==
 </value>
   </data>
-  <data name="donut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Donut_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4SS4RXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -1965,7 +1965,7 @@
         NIx0qtT474VVNaNlnfnh3CkYjFIpVGCFl8djiR03O8p2He5qEDXV/9k=
 </value>
   </data>
-  <data name="burger.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Burger_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4RuCRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -2247,7 +2247,7 @@
         yI38JL9uP0hdKOtf8ylJhfI/H+IVBnzH4qOYz/0WxDlztZvOb6uU4zqiIESkGQQt/gnKFOOCf//Z
 </value>
   </data>
-  <data name="salad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Salad_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4RsyRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
@@ -2517,7 +2517,7 @@
         ixoyKzGQD8uNC4McDADGWf/Z
 </value>
   </data>
-  <data name="fries.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Fries_img.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEASABIAAD/4SQIRXhpZgAATU0AKgAAAAgABQEaAAUAAAABAAAASgEbAAUAAAAB
         AAAAUgEoAAMAAAABAAIAAAExAAIAAAAMAAAAWgEyAAIAAAAUAAAAZgAAAHoAAABIAAAAAQAAAEgAAAAB
