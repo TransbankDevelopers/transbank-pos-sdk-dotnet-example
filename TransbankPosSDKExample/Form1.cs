@@ -236,9 +236,9 @@ namespace TransbankPosSDKExample
                 {
                     MessageBox.Show("No hay elementos para cobrar o el total es 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } catch (TransbankException a)
+            } catch (TransbankSaleException a)
             {
-                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(a.Message + "\n" + a.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
