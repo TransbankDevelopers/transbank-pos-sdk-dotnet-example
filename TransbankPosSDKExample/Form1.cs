@@ -26,7 +26,7 @@ namespace TransbankPosSDKExample
             new Product { Name = "Hamburguesa", Price = 9860},
             new Product { Name = "Papitas", Price = 3600}
         };
-        
+
         public MainForm()
         {
             CenterToScreen();
@@ -44,11 +44,11 @@ namespace TransbankPosSDKExample
             portName = Port_ddown.SelectedItem.ToString();
         }
 
-        private void PollingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PollToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                if (POS.Instance.Polling())
+                if (POS.Instance.Poll())
                 {
                     MessageBox.Show("POS is connected.", "Polling the POS");
                 }
