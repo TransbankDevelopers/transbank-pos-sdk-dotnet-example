@@ -64,14 +64,14 @@ namespace TransbankPosSDKExample
 
         private void Connect_btn_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
-            PortName_lbl.Text = portName;
-            //} catch (TransbankException a)
-            //{
-            //    MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            try
+            {
+                POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
+                PortName_lbl.Text = portName;
+            } catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Disconnect_btn_Click(object sender, EventArgs e)
