@@ -26,7 +26,7 @@ namespace TransbankPosSDKExample
             new Product { Name = "Hamburguesa", Price = 9860},
             new Product { Name = "Papitas", Price = 3600}
         };
-        
+
         public MainForm()
         {
             CenterToScreen();
@@ -221,24 +221,21 @@ namespace TransbankPosSDKExample
                     int ticket = new Random().Next(1, 999999);
                     SaleResponse response = POS.Instance.Sale(total, ticket);
 
-                    if (response.Success)
-                    {
-                        MessageBox.Show(response.ToString());
-                        Clean_btn_Click(sender, e);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error Procesando el Pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
+                   MessageBox.Show(response.ToString());
+                   Clean_btn_Click(sender, e);
                 }
                 else
                 {
                     MessageBox.Show("No hay elementos para cobrar o el total es 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } catch (TransbankException a)
+            } catch (TransbankSaleException a)
             {
-                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error Procesando el Pago" + "\n" +
+                        a.SaleResponse.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message + "\n" + a.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
