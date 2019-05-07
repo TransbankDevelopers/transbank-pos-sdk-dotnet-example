@@ -66,7 +66,7 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
+                POS.Instance.OpenPort(portName);
                 PortName_lbl.Text = portName;
             } catch (TransbankException a)
             {

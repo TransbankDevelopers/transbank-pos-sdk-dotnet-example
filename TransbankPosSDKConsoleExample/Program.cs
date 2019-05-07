@@ -30,7 +30,7 @@ namespace TransbankPosSDKConsoleExample
                 return;
             }
 
-            POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
+            POS.Instance.OpenPort(portName);
             Console.WriteLine("\nSerial port opened successfully");
             Console.WriteLine("Showing Menu");
             ConsoleKeyInfo key = ShowMenu();
@@ -52,7 +52,7 @@ namespace TransbankPosSDKConsoleExample
                             var response = POS.Instance.LoadKeys();
                             Console.WriteLine(response);
                             break;
-                        }catch(Exception e)
+                        }catch(Exception)
                         {
                             throw;
                         }
