@@ -60,7 +60,7 @@ namespace TransbankPosSDKConsoleExample
                     case '3':
                         try
                         {
-                            var response = POS.Instance.RegisterClose();
+                            var response = POS.Instance.Close();
                             Console.WriteLine(response);
                             break;
                         }
@@ -98,7 +98,7 @@ namespace TransbankPosSDKConsoleExample
                 "Seleccione un commando:\n" +
                 "\t(1)\t Poll\n" +
                 "\t(2)\t Load Keys\n" +
-                "\t(3)\t Register Close\n" +
+                "\t(3)\t Close\n" +
                 "\t(4)\t Sample Sale\n" +
                 "\t(0)\t Exit\n"
                 );

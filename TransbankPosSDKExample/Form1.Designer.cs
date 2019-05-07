@@ -51,7 +51,7 @@
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registerCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setNormalModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Disconnect_btn = new System.Windows.Forms.Button();
             this.ShopingList_lst = new System.Windows.Forms.ListView();
@@ -304,7 +304,7 @@
             this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pollToolStripMenuItem,
             this.loadKeysToolStripMenuItem,
-            this.registerCloseToolStripMenuItem,
+            this.CloseToolStripMenuItem,
             this.setNormalModeToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
             this.connectionToolStripMenuItem.Size = new System.Drawing.Size(71, 36);
@@ -324,12 +324,12 @@
             this.loadKeysToolStripMenuItem.Text = "Load Keys";
             this.loadKeysToolStripMenuItem.Click += new System.EventHandler(this.LoadKeysToolStripMenuItem_Click);
             //
-            // registerCloseToolStripMenuItem
+            // closeToolStripMenuItem
             //
-            this.registerCloseToolStripMenuItem.Name = "registerCloseToolStripMenuItem";
-            this.registerCloseToolStripMenuItem.Size = new System.Drawing.Size(309, 38);
-            this.registerCloseToolStripMenuItem.Text = "Register Close";
-            this.registerCloseToolStripMenuItem.Click += new System.EventHandler(this.RegisterCloseToolStripMenuItem_Click);
+            this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
+            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(309, 38);
+            this.CloseToolStripMenuItem.Text = "Close";
+            this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             //
             // setNormalModeToolStripMenuItem
             //
@@ -475,7 +475,7 @@
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pollToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadKeysToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registerCloseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CloseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setNormalModeToolStripMenuItem;
         private System.Windows.Forms.ListView ShopingList_lst;
         private System.Windows.Forms.ColumnHeader Item;

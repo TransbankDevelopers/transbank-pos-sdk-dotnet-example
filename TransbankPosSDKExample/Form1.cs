@@ -101,10 +101,10 @@ namespace TransbankPosSDKExample
             }
         }
 
-        private void RegisterCloseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try {
-                RegisterCloseResponse response = POS.Instance.RegisterClose();
+                CloseResponse response = POS.Instance.Close();
                 if (response.Success)
                 {
                     MessageBox.Show(response.ToString(), "Keys Loaded Successfully.");
