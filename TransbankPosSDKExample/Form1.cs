@@ -44,11 +44,11 @@ namespace TransbankPosSDKExample
             portName = Port_ddown.SelectedItem.ToString();
         }
 
-        private void PollingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PollToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                if (POS.Instance.Polling())
+                if (POS.Instance.Poll())
                 {
                     MessageBox.Show("POS is connected.", "Polling the POS");
                 }
@@ -66,7 +66,7 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
+                POS.Instance.OpenPort(portName);
                 PortName_lbl.Text = portName;
             } catch (TransbankException a)
             {
@@ -101,10 +101,10 @@ namespace TransbankPosSDKExample
             }
         }
 
-        private void RegisterCloseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try {
-                RegisterCloseResponse response = POS.Instance.RegisterClose();
+                CloseResponse response = POS.Instance.Close();
                 if (response.Success)
                 {
                     MessageBox.Show(response.ToString(), "Keys Loaded Successfully.");

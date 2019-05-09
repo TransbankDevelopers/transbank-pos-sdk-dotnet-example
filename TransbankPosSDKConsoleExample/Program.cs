@@ -30,7 +30,7 @@ namespace TransbankPosSDKConsoleExample
                 return;
             }
 
-            POS.Instance.OpenPort(portName, TbkBaudrate.TBK_115200);
+            POS.Instance.OpenPort(portName);
             Console.WriteLine("\nSerial port opened successfully");
             Console.WriteLine("Showing Menu");
             ConsoleKeyInfo key = ShowMenu();
@@ -40,7 +40,7 @@ namespace TransbankPosSDKConsoleExample
                 switch (key.KeyChar)
                 {
                     case '1':
-                        if (POS.Instance.Polling())
+                        if (POS.Instance.Poll())
                             Console.WriteLine("Pos Connected");
                         else
                             Console.WriteLine("Pos NOT Connected");
@@ -52,7 +52,7 @@ namespace TransbankPosSDKConsoleExample
                             var response = POS.Instance.LoadKeys();
                             Console.WriteLine(response);
                             break;
-                        }catch(Exception e)
+                        }catch(Exception)
                         {
                             throw;
                         }
@@ -60,7 +60,7 @@ namespace TransbankPosSDKConsoleExample
                     case '3':
                         try
                         {
-                            var response = POS.Instance.RegisterClose();
+                            var response = POS.Instance.Close();
                             Console.WriteLine(response);
                             break;
                         }
@@ -91,14 +91,14 @@ namespace TransbankPosSDKConsoleExample
                 Console.WriteLine("\n");
             } while (!key.KeyChar.Equals('0'));
         }
- 
+
         public static ConsoleKeyInfo ShowMenu()
         {
             Console.WriteLine(
                 "Seleccione un commando:\n" +
-                "\t(1)\t Polling\n" +
+                "\t(1)\t Poll\n" +
                 "\t(2)\t Load Keys\n" +
-                "\t(3)\t Register Close\n" +
+                "\t(3)\t Close\n" +
                 "\t(4)\t Sample Sale\n" +
                 "\t(0)\t Exit\n"
                 );
