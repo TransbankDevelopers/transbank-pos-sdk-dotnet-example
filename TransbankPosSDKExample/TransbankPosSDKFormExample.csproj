@@ -44,8 +44,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TransbankPosSDK, Version=0.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TransbankPosSDK.0.0.5-pre-alpha\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
+    <Reference Include="TransbankPosSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TransbankPosSDK.1.0.0\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
