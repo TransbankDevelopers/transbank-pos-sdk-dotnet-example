@@ -83,7 +83,20 @@ namespace TransbankPosSDKConsoleExample
                             break;
                         }
 
-                    default:
+                    case '5':
+                        try
+                        {
+                            var response = POS.Instance.GetTotals();
+                            Console.WriteLine(response);
+                            break;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Error: " + e.Message);
+                            throw;
+                        }
+
+                default:
                         Console.WriteLine("Invalid Option");
                         break;
                 }
@@ -100,6 +113,7 @@ namespace TransbankPosSDKConsoleExample
                 "\t(2)\t Load Keys\n" +
                 "\t(3)\t Close\n" +
                 "\t(4)\t Sample Sale\n" +
+                "\t(5)\t Get Totals\n" +
                 "\t(0)\t Exit\n"
                 );
             return Console.ReadKey();

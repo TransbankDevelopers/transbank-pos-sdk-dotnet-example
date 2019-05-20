@@ -238,5 +238,21 @@ namespace TransbankPosSDKExample
                 MessageBox.Show(a.Message + "\n" + a.Data.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void getTotalsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GetTotalsResponse response = POS.Instance.GetTotals();
+                if (response.Success)
+                {
+                    MessageBox.Show(response.ToString(), "Totals obtained Successfully.");
+                }
+            }
+            catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
