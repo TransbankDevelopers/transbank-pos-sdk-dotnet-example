@@ -254,5 +254,21 @@ namespace TransbankPosSDKExample
                 MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void lastSaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LastSaleResponse response = POS.Instance.LastSale();
+                if (response.Success)
+                {
+                    MessageBox.Show(response.ToString(), "Last Sale obtained Successfully.");
+                }
+            }
+            catch (TransbankException a)
+            {
+                MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
