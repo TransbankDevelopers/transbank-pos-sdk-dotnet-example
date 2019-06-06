@@ -109,6 +109,22 @@ namespace TransbankPosSDKConsoleExample
                             throw;
                         }
 
+                    case '7':
+                        Console.WriteLine("Insert Operation ID:\n");
+                        string op = Console.ReadLine();
+
+                        try
+                        {
+                            var response = POS.Instance.Cancellation(Convert.ToInt32(op));
+                            Console.WriteLine(response);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Error: " + e.Message);
+                            // throw;
+                        }
+                        break;
+
                     default:
                         Console.WriteLine("Invalid Option");
                         break;
@@ -128,6 +144,7 @@ namespace TransbankPosSDKConsoleExample
                 "\t(4)\t Sample Sale\n" +
                 "\t(5)\t Get Totals\n" +
                 "\t(6)\t Get the Last Sale\n" +
+                "\t(7)\t Cancellation\n" +
                 "\t(0)\t Exit\n"
                 );
             return Console.ReadKey();
