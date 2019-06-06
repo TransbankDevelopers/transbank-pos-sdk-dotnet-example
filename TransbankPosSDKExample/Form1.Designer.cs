@@ -53,6 +53,7 @@
             this.loadKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setNormalModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getTotalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Disconnect_btn = new System.Windows.Forms.Button();
             this.ShopingList_lst = new System.Windows.Forms.ListView();
             this.Item = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -60,7 +61,7 @@
             this.ShopingListLeyend_lbl = new System.Windows.Forms.Label();
             this.Pay_btn = new System.Windows.Forms.Button();
             this.Clean_btn = new System.Windows.Forms.Button();
-            this.getTotalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lastSaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Cofee_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Juice_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cookies_img)).BeginInit();
@@ -288,7 +289,8 @@
             this.loadKeysToolStripMenuItem,
             this.CloseToolStripMenuItem,
             this.setNormalModeToolStripMenuItem,
-            this.getTotalsToolStripMenuItem});
+            this.getTotalsToolStripMenuItem,
+            this.lastSaleToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
             this.connectionToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.connectionToolStripMenuItem.Text = "POS";
@@ -320,6 +322,13 @@
             this.setNormalModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.setNormalModeToolStripMenuItem.Text = "Set Normal Mode";
             this.setNormalModeToolStripMenuItem.Click += new System.EventHandler(this.SetNormalModeToolStripMenuItem_Click);
+            // 
+            // getTotalsToolStripMenuItem
+            // 
+            this.getTotalsToolStripMenuItem.Name = "getTotalsToolStripMenuItem";
+            this.getTotalsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.getTotalsToolStripMenuItem.Text = "Get Totals";
+            this.getTotalsToolStripMenuItem.Click += new System.EventHandler(this.getTotalsToolStripMenuItem_Click);
             // 
             // Disconnect_btn
             // 
@@ -384,12 +393,12 @@
             this.Clean_btn.UseVisualStyleBackColor = true;
             this.Clean_btn.Click += new System.EventHandler(this.Clean_btn_Click);
             // 
-            // getTotalsToolStripMenuItem
+            // lastSaleToolStripMenuItem
             // 
-            this.getTotalsToolStripMenuItem.Name = "getTotalsToolStripMenuItem";
-            this.getTotalsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.getTotalsToolStripMenuItem.Text = "Get Totals";
-            this.getTotalsToolStripMenuItem.Click += new System.EventHandler(this.getTotalsToolStripMenuItem_Click);
+            this.lastSaleToolStripMenuItem.Name = "lastSaleToolStripMenuItem";
+            this.lastSaleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lastSaleToolStripMenuItem.Text = "Last Sale";
+            this.lastSaleToolStripMenuItem.Click += new System.EventHandler(this.lastSaleToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -468,6 +477,7 @@
         private System.Windows.Forms.Button Pay_btn;
         private System.Windows.Forms.Button Clean_btn;
         private System.Windows.Forms.ToolStripMenuItem getTotalsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lastSaleToolStripMenuItem;
     }
 }
 
