@@ -121,7 +121,7 @@ namespace TransbankPosSDKConsoleExample
                         catch (Exception e)
                         {
                             Console.WriteLine("Error: " + e.Message);
-                            // throw;
+                            throw;
                         }
                         break;
 
