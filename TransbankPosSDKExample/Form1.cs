@@ -270,5 +270,12 @@ namespace TransbankPosSDKExample
                 MessageBox.Show(a.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void cancellationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form p = new CancellationPrompt();
+            p.Show();
+            p.Focus();
+        }
     }
 }
