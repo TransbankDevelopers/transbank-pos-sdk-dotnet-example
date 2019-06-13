@@ -62,7 +62,7 @@
             this.ShopingListLeyend_lbl = new System.Windows.Forms.Label();
             this.Pay_btn = new System.Windows.Forms.Button();
             this.Clean_btn = new System.Windows.Forms.Button();
-            this.cancellationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Cofee_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Juice_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cookies_img)).BeginInit();
@@ -292,7 +292,7 @@
             this.setNormalModeToolStripMenuItem,
             this.getTotalsToolStripMenuItem,
             this.lastSaleToolStripMenuItem,
-            this.cancellationToolStripMenuItem});
+            this.refundToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
             this.connectionToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.connectionToolStripMenuItem.Text = "POS";
@@ -402,12 +402,12 @@
             this.Clean_btn.UseVisualStyleBackColor = true;
             this.Clean_btn.Click += new System.EventHandler(this.Clean_btn_Click);
             // 
-            // cancellationToolStripMenuItem
+            // refundToolStripMenuItem
             // 
-            this.cancellationToolStripMenuItem.Name = "cancellationToolStripMenuItem";
-            this.cancellationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cancellationToolStripMenuItem.Text = "Cancellation";
-            this.cancellationToolStripMenuItem.Click += new System.EventHandler(this.cancellationToolStripMenuItem_Click);
+            this.refundToolStripMenuItem.Name = "refundToolStripMenuItem";
+            this.refundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refundToolStripMenuItem.Text = "Refund";
+            this.refundToolStripMenuItem.Click += new System.EventHandler(this.refundToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -487,7 +487,7 @@
         private System.Windows.Forms.Button Clean_btn;
         private System.Windows.Forms.ToolStripMenuItem getTotalsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lastSaleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancellationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refundToolStripMenuItem;
     }
 }
 
