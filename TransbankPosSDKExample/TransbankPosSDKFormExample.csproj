@@ -59,8 +59,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TransbankPosSDK, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TransbankPosSDK.1.3.0-pre\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
+    <Reference Include="TransbankPosSDK, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TransbankPosSDK.1.3.1-pre\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,11 +70,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="CancellationPrompt.cs">
+    <Compile Include="RefundPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CancellationPrompt.Designer.cs">
-      <DependentUpon>CancellationPrompt.cs</DependentUpon>
+    <Compile Include="RefundPrompt.Designer.cs">
+      <DependentUpon>RefundPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
@@ -82,8 +82,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CancellationPrompt.resx">
-      <DependentUpon>CancellationPrompt.cs</DependentUpon>
+    <EmbeddedResource Include="RefundPrompt.resx">
+      <DependentUpon>RefundPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
