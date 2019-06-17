@@ -1,6 +1,6 @@
 ﻿namespace TransbankPosSDKExample
 {
-    partial class CancellationPrompt
+    partial class RefundPrompt
     {
         /// <summary>
         /// Required designer variable.
@@ -71,7 +71,7 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Ingrese el número de la operación a anular";
             // 
-            // CancellationPrompt
+            // RefundPrompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -82,12 +82,12 @@
             this.Controls.Add(this.close);
             this.Controls.Add(this.accept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "CancellationPrompt";
+            this.Name = "RefundPrompt";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anulación de Transacción";
-            this.Load += new System.EventHandler(this.CancellationPrompt_Load);
+            this.Load += new System.EventHandler(this.RefundPrompt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

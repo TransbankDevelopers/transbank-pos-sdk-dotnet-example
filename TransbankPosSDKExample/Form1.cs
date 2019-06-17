@@ -271,9 +271,9 @@ namespace TransbankPosSDKExample
             }
         }
 
-        private void cancellationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void refundToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form p = new CancellationPrompt();
+            Form p = new RefundPrompt();
             p.Show();
             p.Focus();
         }

@@ -15,14 +15,14 @@ using Transbank.POS.Responses;
 
 namespace TransbankPosSDKExample
 {
-    public partial class CancellationPrompt : Form
+    public partial class RefundPrompt : Form
     {
-        public CancellationPrompt()
+        public RefundPrompt()
         {
             InitializeComponent();
         }
 
-        private void CancellationPrompt_Load(object sender, EventArgs e)
+        private void RefundPrompt_Load(object sender, EventArgs e)
         {
 
         }
@@ -37,10 +37,10 @@ namespace TransbankPosSDKExample
             int op = Convert.ToInt32(opInputText.Text);
             try
             {
-                CancellResponse response = POS.Instance.Cancellation(op);
+                RefundResp response = POS.Instance.Refund(op);
                 if (response.Success)
                 {
-                    MessageBox.Show(response.ToString(), "Cancellation Success.");
+                    MessageBox.Show(response.ToString(), "Refund Success.");
                     this.Close();
                 }
             }
