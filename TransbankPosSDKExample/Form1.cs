@@ -277,5 +277,12 @@ namespace TransbankPosSDKExample
             p.Show();
             p.Focus();
         }
+
+        private void salesDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form p = new DetailPrompt();
+            p.Show();
+            p.Focus();
+        }
     }
 }
