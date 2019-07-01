@@ -243,7 +243,7 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                GetTotalsResponse response = POS.Instance.GetTotals();
+                TotalsResponse response = POS.Instance.Totals();
                 if (response.Success)
                 {
                     MessageBox.Show(response.ToString(), "Totals obtained Successfully.");

@@ -31,7 +31,7 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                var details = POS.Instance.Details(0);
+                var details = POS.Instance.Details(true);
                 MessageBox.Show("Impreso en POS", "Resultado Detalle de venta.");
                 this.Close();
             }
@@ -46,7 +46,7 @@ namespace TransbankPosSDKExample
             try
             {
                 string response = "";
-                var details = POS.Instance.Details(1);
+                var details = POS.Instance.Details(false);
                 foreach (Transbank.POS.Responses.DetailResponse detail in details)
                 {
                     response += "Tipo de Tarjeta : " + detail.CardType + " Total : " + detail.Amount + "\n";
