@@ -243,7 +243,7 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                GetTotalsResponse response = POS.Instance.GetTotals();
+                TotalsResponse response = POS.Instance.Totals();
                 if (response.Success)
                 {
                     MessageBox.Show(response.ToString(), "Totals obtained Successfully.");
@@ -274,6 +274,13 @@ namespace TransbankPosSDKExample
         private void refundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form p = new RefundPrompt();
+            p.Show();
+            p.Focus();
+        }
+
+        private void salesDetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form p = new DetailPrompt();
             p.Show();
             p.Focus();
         }

@@ -125,6 +125,25 @@ namespace TransbankPosSDKConsoleExample
                         }
                         break;
 
+                    case '8':
+                        Console.WriteLine("Select 0 to print or 1 to send data:\n");
+                        string print = Console.ReadLine();
+
+                        try
+                        {
+                            var details = POS.Instance.Details(Convert.ToInt32(print));
+                            foreach (Transbank.POS.Responses.DetailResponse detail in details)
+                            {
+                                Console.WriteLine("Tipo de Tarjeta : " + detail.CardType + " Total : " + detail.Amount);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Error: " + e.Message);
+                            throw;
+                        }
+                        break;
+
                     default:
                         Console.WriteLine("Invalid Option");
                         break;
@@ -145,6 +164,7 @@ namespace TransbankPosSDKConsoleExample
                 "\t(5)\t Get Totals\n" +
                 "\t(6)\t Get the Last Sale\n" +
                 "\t(7)\t Refund\n" +
+                "\t(8)\t Sales detail\n" +
                 "\t(0)\t Exit\n"
                 );
             return Console.ReadKey();

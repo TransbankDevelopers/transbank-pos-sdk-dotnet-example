@@ -37,7 +37,7 @@ namespace TransbankPosSDKExample
             int op = Convert.ToInt32(opInputText.Text);
             try
             {
-                RefundResp response = POS.Instance.Refund(op);
+                RefundResponse response = POS.Instance.Refund(op);
                 if (response.Success)
                 {
                     MessageBox.Show(response.ToString(), "Refund Success.");
