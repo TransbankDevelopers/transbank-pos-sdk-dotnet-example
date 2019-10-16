@@ -86,7 +86,7 @@ namespace TransbankPosSDKConsoleExample
                     case '5':
                         try
                         {
-                            var response = POS.Instance.GetTotals();
+                            var response = POS.Instance.Totals();
                             Console.WriteLine(response);
                             break;
                         }
@@ -126,12 +126,12 @@ namespace TransbankPosSDKConsoleExample
                         break;
 
                     case '8':
-                        Console.WriteLine("Select 0 to print or 1 to send data:\n");
-                        string print = Console.ReadLine();
+                        Console.WriteLine("Select 0 to print on pos or any other to get data from pos:\n");
+                        bool print = Console.ReadKey().KeyChar.Equals("0");
 
                         try
                         {
-                            var details = POS.Instance.Details(Convert.ToInt32(print));
+                            var details = POS.Instance.Details(print);
                             foreach (Transbank.POS.Responses.DetailResponse detail in details)
                             {
                                 Console.WriteLine("Tipo de Tarjeta : " + detail.CardType + " Total : " + detail.Amount);
