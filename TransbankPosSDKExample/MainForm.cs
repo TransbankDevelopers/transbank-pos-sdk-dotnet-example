@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using Transbank.POS;
 using Transbank.POS.Exceptions;
 using Transbank.POS.Utils;
 using Transbank.POS.Responses;
-using System.Collections.Generic;
 
 namespace TransbankPosSDKExample
 {
@@ -12,9 +12,7 @@ namespace TransbankPosSDKExample
     {
         private string portName = "";
         private int total = 0;
-        private List<Product> buyItems;
-
-        private List<Product> internalItems = new List<Product>()
+        private readonly List<Product> internalItems = new List<Product>()
         {
             new Product { Name = "Café", Price = 1500},
             new Product { Name = "Jugo", Price = 2500},
@@ -27,6 +25,8 @@ namespace TransbankPosSDKExample
             new Product { Name = "Papitas", Price = 3600}
         };
 
+        public List<Product> BuyItems { get; }
+
         public MainForm()
         {
             CenterToScreen();
@@ -36,7 +36,7 @@ namespace TransbankPosSDKExample
             Port_ddown.DataSource = Serial.ListPorts();
             portName = Port_ddown.SelectedItem.ToString();
             Price_lbl.Text = total.ToString();
-            buyItems = new List<Product>();
+            BuyItems = new List<Product>();
         }
 
         private void PortDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -283,6 +283,28 @@ namespace TransbankPosSDKExample
             Form p = new DetailPrompt();
             p.Show();
             p.Focus();
+        }
+
+        private void Btn_onepay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (total > 0 && ShopingList_lst.Items.Count > 0)
+                {
+                    OnepayForm qr = new OnepayForm(total);
+                    qr.Show();
+                    qr.Focus();
+                    Clean_btn_Click(sender,e);
+                }
+                else
+                {
+                    MessageBox.Show("No hay elementos para cobrar o el total es 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch(Exception a)
+            {
+                MessageBox.Show("Error Procesando el Pago " + a.Message);
+            }
         }
     }
 }

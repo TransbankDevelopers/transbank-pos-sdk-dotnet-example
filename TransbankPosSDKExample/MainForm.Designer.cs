@@ -56,6 +56,7 @@
             this.getTotalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lastSaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salesDetailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Disconnect_btn = new System.Windows.Forms.Button();
             this.ShopingList_lst = new System.Windows.Forms.ListView();
             this.Item = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,7 +64,7 @@
             this.ShopingListLeyend_lbl = new System.Windows.Forms.Label();
             this.Pay_btn = new System.Windows.Forms.Button();
             this.Clean_btn = new System.Windows.Forms.Button();
-            this.salesDetailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_onepay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Cofee_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Juice_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cookies_img)).BeginInit();
@@ -224,7 +225,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.Price_lbl, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.Total_lbl, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(479, 331);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(475, 331);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
@@ -280,7 +281,7 @@
             this.connectionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(648, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(641, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -302,51 +303,58 @@
             // pollToolStripMenuItem
             // 
             this.pollToolStripMenuItem.Name = "pollToolStripMenuItem";
-            this.pollToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pollToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.pollToolStripMenuItem.Text = "Check Connection";
             this.pollToolStripMenuItem.Click += new System.EventHandler(this.PollToolStripMenuItem_Click);
             // 
             // loadKeysToolStripMenuItem
             // 
             this.loadKeysToolStripMenuItem.Name = "loadKeysToolStripMenuItem";
-            this.loadKeysToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadKeysToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.loadKeysToolStripMenuItem.Text = "Load Keys";
             this.loadKeysToolStripMenuItem.Click += new System.EventHandler(this.LoadKeysToolStripMenuItem_Click);
             // 
             // CloseToolStripMenuItem
             // 
             this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
-            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.CloseToolStripMenuItem.Text = "Close";
             this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
             // setNormalModeToolStripMenuItem
             // 
             this.setNormalModeToolStripMenuItem.Name = "setNormalModeToolStripMenuItem";
-            this.setNormalModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setNormalModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.setNormalModeToolStripMenuItem.Text = "Set Normal Mode";
             this.setNormalModeToolStripMenuItem.Click += new System.EventHandler(this.SetNormalModeToolStripMenuItem_Click);
             // 
             // getTotalsToolStripMenuItem
             // 
             this.getTotalsToolStripMenuItem.Name = "getTotalsToolStripMenuItem";
-            this.getTotalsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.getTotalsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.getTotalsToolStripMenuItem.Text = "Get Totals";
             this.getTotalsToolStripMenuItem.Click += new System.EventHandler(this.getTotalsToolStripMenuItem_Click);
             // 
             // lastSaleToolStripMenuItem
             // 
             this.lastSaleToolStripMenuItem.Name = "lastSaleToolStripMenuItem";
-            this.lastSaleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lastSaleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.lastSaleToolStripMenuItem.Text = "Last Sale";
             this.lastSaleToolStripMenuItem.Click += new System.EventHandler(this.lastSaleToolStripMenuItem_Click);
             // 
             // refundToolStripMenuItem
             // 
             this.refundToolStripMenuItem.Name = "refundToolStripMenuItem";
-            this.refundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refundToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.refundToolStripMenuItem.Text = "Refund";
             this.refundToolStripMenuItem.Click += new System.EventHandler(this.refundToolStripMenuItem_Click);
+            // 
+            // salesDetailToolStripMenuItem
+            // 
+            this.salesDetailToolStripMenuItem.Name = "salesDetailToolStripMenuItem";
+            this.salesDetailToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.salesDetailToolStripMenuItem.Text = "Sales Detail";
+            this.salesDetailToolStripMenuItem.Click += new System.EventHandler(this.salesDetailToolStripMenuItem_Click);
             // 
             // Disconnect_btn
             // 
@@ -365,6 +373,7 @@
             this.precio});
             this.ShopingList_lst.FullRowSelect = true;
             this.ShopingList_lst.GridLines = true;
+            this.ShopingList_lst.HideSelection = false;
             this.ShopingList_lst.Location = new System.Drawing.Point(479, 76);
             this.ShopingList_lst.Name = "ShopingList_lst";
             this.ShopingList_lst.Size = new System.Drawing.Size(157, 249);
@@ -393,7 +402,7 @@
             // 
             // Pay_btn
             // 
-            this.Pay_btn.Location = new System.Drawing.Point(566, 383);
+            this.Pay_btn.Location = new System.Drawing.Point(562, 376);
             this.Pay_btn.Name = "Pay_btn";
             this.Pay_btn.Size = new System.Drawing.Size(67, 28);
             this.Pay_btn.TabIndex = 21;
@@ -403,7 +412,7 @@
             // 
             // Clean_btn
             // 
-            this.Clean_btn.Location = new System.Drawing.Point(479, 383);
+            this.Clean_btn.Location = new System.Drawing.Point(483, 376);
             this.Clean_btn.Name = "Clean_btn";
             this.Clean_btn.Size = new System.Drawing.Size(67, 28);
             this.Clean_btn.TabIndex = 22;
@@ -411,18 +420,22 @@
             this.Clean_btn.UseVisualStyleBackColor = true;
             this.Clean_btn.Click += new System.EventHandler(this.Clean_btn_Click);
             // 
-            // salesDetailToolStripMenuItem
+            // btn_onepay
             // 
-            this.salesDetailToolStripMenuItem.Name = "salesDetailToolStripMenuItem";
-            this.salesDetailToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.salesDetailToolStripMenuItem.Text = "Sales Detail";
-            this.salesDetailToolStripMenuItem.Click += new System.EventHandler(this.salesDetailToolStripMenuItem_Click);
+            this.btn_onepay.Location = new System.Drawing.Point(483, 411);
+            this.btn_onepay.Name = "btn_onepay";
+            this.btn_onepay.Size = new System.Drawing.Size(146, 23);
+            this.btn_onepay.TabIndex = 23;
+            this.btn_onepay.Text = "Pagar con Onepay";
+            this.btn_onepay.UseVisualStyleBackColor = true;
+            this.btn_onepay.Click += new System.EventHandler(this.Btn_onepay_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 421);
+            this.ClientSize = new System.Drawing.Size(641, 446);
+            this.Controls.Add(this.btn_onepay);
             this.Controls.Add(this.Clean_btn);
             this.Controls.Add(this.Pay_btn);
             this.Controls.Add(this.ShopingListLeyend_lbl);
@@ -498,6 +511,7 @@
         private System.Windows.Forms.ToolStripMenuItem lastSaleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesDetailToolStripMenuItem;
+        private System.Windows.Forms.Button btn_onepay;
     }
 }
 
