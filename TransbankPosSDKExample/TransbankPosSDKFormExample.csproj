@@ -76,6 +76,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OnepayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnepayForm.Designer.cs">
+      <DependentUpon>OnepayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RefundPrompt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnepayForm.resx">
+      <DependentUpon>OnepayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RefundPrompt.resx">
       <DependentUpon>RefundPrompt.cs</DependentUpon>
