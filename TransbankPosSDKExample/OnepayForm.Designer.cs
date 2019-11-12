@@ -141,7 +141,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "OnepayForm";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.FormClosed += this.OnepayForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)(this.img_qr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

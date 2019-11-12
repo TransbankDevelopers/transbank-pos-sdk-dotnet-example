@@ -20,7 +20,7 @@ namespace TransbankPosSDKExample
 
             //Subscribe to events
             Pay.OnConnect += (sender, e) => UpdateWSStatus("Web Socket Conectado");
-            Pay.OnDisconnect += (sender, e) => UpdateWSStatus("Web Socket Desconectado");
+            Pay.OnDisconnect += WsDisconnected;
             Pay.OnNewMessage += UpdateStatus;
             Pay.OnSuccessfulPayment += ProcessPaymentResult;
 
@@ -36,20 +36,27 @@ namespace TransbankPosSDKExample
             txt_ott.Text = response.Ott;
 
             //Connect to Websocket and wait for response
-            _ = Pay.WatchPayment(response);
+            Pay.WatchPayment();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void OnepayForm_FormClosed(object sender, EventArgs e)
         {
+            Pay.StopPayment();
+        }
 
+        private void WsDisconnected(object sender, EventArgs e)
+        {
+            this.UpdateWSStatus("Web Socket Desconectado");
+            Console.WriteLine(DateTime.Now.ToString());
+            MessageBox.Show("Web Socket Disconnected: " + DateTime.Now.ToString(), "Error");
+            doClose();
         }
 
         public void ProcessPaymentResult( object sender, SuccessfulPaymentEventArgs e)
         {
             MessageBox.Show(e.ToString(), "Succesful Sale");
-
-            //Close this form from the thread woh created it
-            _ = Invoke((MethodInvoker)delegate { Close(); });
+            OnepayPayment.RefundPayment(e.Amount, e.Occ, e.ExternalUniqueNumber, e.AuthorizationCode);
+            doClose();
         }
 
         public void UpdateStatus(object sender, NewMessageEventArgs e)
@@ -82,6 +89,19 @@ namespace TransbankPosSDKExample
                 lbl_ws_status_message.Text = message;
             }
 
+        }
+
+        private void doClose()
+        {
+            //Close this form from the thread woh created it
+            try
+            {
+                _ = Invoke((MethodInvoker)delegate { Close(); });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error on Windows Close!\n" + ex);
+            }
         }
     }
 }

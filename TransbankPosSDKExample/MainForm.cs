@@ -14,15 +14,15 @@ namespace TransbankPosSDKExample
         private int total = 0;
         private readonly List<Product> internalItems = new List<Product>()
         {
-            new Product { Name = "Café", Price = 1500},
-            new Product { Name = "Jugo", Price = 2500},
-            new Product { Name = "Galletas", Price = 1000},
-            new Product { Name = "Helado", Price = 2150},
-            new Product { Name = "Donut", Price = 1500},
-            new Product { Name = "Pizza", Price = 8650},
-            new Product { Name = "Ensalada", Price = 8674},
-            new Product { Name = "Hamburguesa", Price = 9860},
-            new Product { Name = "Papitas", Price = 3600}
+            new Product { Name = "Café", Price = 1},
+            new Product { Name = "Jugo", Price = 2},
+            new Product { Name = "Galletas", Price = 3},
+            new Product { Name = "Helado", Price = 1},
+            new Product { Name = "Donut", Price = 2},
+            new Product { Name = "Pizza", Price = 3},
+            new Product { Name = "Ensalada", Price = 1},
+            new Product { Name = "Hamburguesa", Price = 2},
+            new Product { Name = "Papitas", Price = 3}
         };
 
         public List<Product> BuyItems { get; }
