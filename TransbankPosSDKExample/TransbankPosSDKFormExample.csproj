@@ -59,9 +59,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TransbankPosSDK, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TransbankPosSDK.2.0.0\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetailPrompt.cs">
@@ -70,11 +67,17 @@
     <Compile Include="DetailPrompt.Designer.cs">
       <DependentUpon>DetailPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnepayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnepayForm.Designer.cs">
+      <DependentUpon>OnepayForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RefundPrompt.cs">
       <SubType>Form</SubType>
@@ -88,8 +91,11 @@
     <EmbeddedResource Include="DetailPrompt.resx">
       <DependentUpon>DetailPrompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnepayForm.resx">
+      <DependentUpon>OnepayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RefundPrompt.resx">
       <DependentUpon>RefundPrompt.cs</DependentUpon>
