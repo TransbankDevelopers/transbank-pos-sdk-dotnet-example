@@ -67,12 +67,20 @@ namespace TransbankPosSDKExample
                 _ = lbl_status_message.BeginInvoke((MethodInvoker)delegate () {
                     lbl_status_message.Text = e.Status;
                     lbl_status_description_message.Text = e.Description;
+                    if (e.Status == "OTT_ASSIGNED")
+                    {
+                        img_qr.Image = Properties.Resources.loading;
+                    }
                 });
             }
             else
             {
                 lbl_status_message.Text = e.Status;
                 lbl_status_description_message.Text = e.Description;
+                if (e.Status == "OTT_ASSIGNED")
+                {
+                    img_qr.Image = Properties.Resources.loading;
+                }
             }
         }
 

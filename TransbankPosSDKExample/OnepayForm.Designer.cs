@@ -53,10 +53,11 @@
             // 
             this.txt_ott.BackColor = this.BackColor;
             this.txt_ott.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_ott.Font = new System.Drawing.Font("Impact", 10F);
             this.txt_ott.Location = new System.Drawing.Point(270, 483);
             this.txt_ott.Name = "txt_ott";
             this.txt_ott.ReadOnly = true;
-            this.txt_ott.Size = new System.Drawing.Size(176, 24);
+            this.txt_ott.Size = new System.Drawing.Size(176, 33);
             this.txt_ott.TabIndex = 1;
             this.txt_ott.TabStop = false;
             this.txt_ott.Text = "OTT";
@@ -73,9 +74,10 @@
             // lbl_ott
             // 
             this.lbl_ott.AutoSize = true;
+            this.lbl_ott.Font = new System.Drawing.Font("Impact", 10F);
             this.lbl_ott.Location = new System.Drawing.Point(186, 483);
             this.lbl_ott.Name = "lbl_ott";
-            this.lbl_ott.Size = new System.Drawing.Size(60, 25);
+            this.lbl_ott.Size = new System.Drawing.Size(59, 34);
             this.lbl_ott.TabIndex = 3;
             this.lbl_ott.Text = "OTT:";
             // 
@@ -120,7 +122,7 @@
             this.lbl_status_description_message.AutoSize = true;
             this.lbl_status_description_message.Location = new System.Drawing.Point(265, 568);
             this.lbl_status_description_message.Name = "lbl_status_description_message";
-            this.lbl_status_description_message.Size = new System.Drawing.Size(240, 50);
+            this.lbl_status_description_message.Size = new System.Drawing.Size(120, 25);
             this.lbl_status_description_message.TabIndex = 8;
             this.lbl_status_description_message.Text = "Description";
             // 
@@ -141,7 +143,6 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "OnepayForm";
             this.Text = "Form2";
-            this.FormClosed += this.OnepayForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)(this.img_qr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
