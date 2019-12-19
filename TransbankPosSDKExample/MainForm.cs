@@ -107,7 +107,7 @@ namespace TransbankPosSDKExample
                 CloseResponse response = POS.Instance.Close();
                 if (response.Success)
                 {
-                    MessageBox.Show(response.ToString(), "Keys Loaded Successfully.");
+                    MessageBox.Show(response.ToString(), "Register Closed Successfully.");
                 }
             }
             catch (TransbankException a)
