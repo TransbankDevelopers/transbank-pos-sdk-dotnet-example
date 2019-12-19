@@ -14,12 +14,12 @@ namespace TransbankPosSDKExample
         private int total = 0;
         private readonly List<Product> internalItems = new List<Product>()
         {
-            new Product { Name = "Café", Price = 1},
-            new Product { Name = "Jugo", Price = 2},
-            new Product { Name = "Galletas", Price = 3},
-            new Product { Name = "Helado", Price = 1},
-            new Product { Name = "Donut", Price = 2},
-            new Product { Name = "Pizza", Price = 3},
+            new Product { Name = "Café", Price = 50},
+            new Product { Name = "Jugo", Price = 100},
+            new Product { Name = "Galletas", Price = 10},
+            new Product { Name = "Helado", Price = 1000},
+            new Product { Name = "Donut", Price = 2000},
+            new Product { Name = "Pizza", Price = 3000},
             new Product { Name = "Ensalada", Price = 1},
             new Product { Name = "Hamburguesa", Price = 2},
             new Product { Name = "Papitas", Price = 3}
@@ -218,8 +218,8 @@ namespace TransbankPosSDKExample
             try{
                 if (total > 0 && ShopingList_lst.Items.Count > 0)
                 {
-                    int ticket = new Random().Next(1, 999999);
-                    SaleResponse response = POS.Instance.Sale(total, ticket);
+                   string ticket = new Random().Next(0, 999999).ToString("D6");
+                   SaleResponse response = POS.Instance.Sale(total, ticket);
 
                    MessageBox.Show(response.ToString());
                    Clean_btn_Click(sender, e);
