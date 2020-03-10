@@ -24,6 +24,9 @@ Primero deberás clonar este repositorio en tu computador:
 ````batch
 git clone https://github.com/TransbankDevelopers/transbank-pos-sdk-dotnet-example.git
 ````
+## Dependencias
+
+Asegurate de tener en tu path, o copiar en la carpeta de salida de este proyecto la ultima version de `libserialport.dll` y `TransbankWrap.dll`. Las puedes encontrar incluidas en el ultimo release del SDK github.com/TransbankDevelopers/transbank-pos-sdk-c/releases/latest
 
 ## Ejecutar ejemplo
 
