@@ -38,4 +38,4 @@ El ejemplo viene listo para correr usando Visual Studio:
 4. Clic derecho nuevamente sobre el proyecto `TransbankPosSDKFormExample` y seleccionar la opción Compilar.
 5. Iniciar la aplicación (`ctrl + F5`) `Menú` -> `Debug` -> `Iniciar sin debug`
 
-Si todo ha salido bien deberías ver una aplicación WindowsForm y probar los distintos comandos del POS que tengas conectado a tu equipo.
+Si todo ha salido bien, deberías ver una aplicación `WindowsForm` y probar los distintos comandos del POS que tengas conectado a tu equipo.
