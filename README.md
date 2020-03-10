@@ -24,6 +24,9 @@ Primero deberás clonar este repositorio en tu computador:
 ````batch
 git clone https://github.com/TransbankDevelopers/transbank-pos-sdk-dotnet-example.git
 ````
+## Dependencias
+
+Asegúrate de tener en tu path, o copiar en la carpeta de salida de este proyecto, la última versión de `libserialport.dll` y `TransbankWrap.dll`. Las puedes encontrar incluidas en el [último release del SDK](https://github.com/TransbankDevelopers/transbank-pos-sdk-c/releases/latest)
 
 ## Ejecutar ejemplo
 
@@ -35,4 +38,4 @@ El ejemplo viene listo para correr usando Visual Studio:
 4. Clic derecho nuevamente sobre el proyecto `TransbankPosSDKFormExample` y seleccionar la opción Compilar.
 5. Iniciar la aplicación (`ctrl + F5`) `Menú` -> `Debug` -> `Iniciar sin debug`
 
-Si todo ha salido bien deberías ver una aplicación WindowsForm y probar los distintos comandos del POS que tengas conectado a tu equipo.
+Si todo ha salido bien, deberías ver una aplicación `WindowsForm` y probar los distintos comandos del POS que tengas conectado a tu equipo.
