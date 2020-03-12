@@ -119,8 +119,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Transbank, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TransbankSDK.2.3.0\lib\net452\Transbank.dll</HintPath>
+    <Reference Include="Transbank, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TransbankSDK.2.4.0\lib\net452\Transbank.dll</HintPath>
     </Reference>
     <Reference Include="TransbankPosSDK, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TransbankPosSDK.2.1.1\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
