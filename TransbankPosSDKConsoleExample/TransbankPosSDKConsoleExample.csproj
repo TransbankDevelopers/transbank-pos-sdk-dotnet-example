@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -121,11 +121,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Transbank, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TransbankSDK.2.3.0\lib\net452\Transbank.dll</HintPath>
+    <Reference Include="System.IO.Ports">
+      <HintPath>..\..\transbank-pos-sdk-dotnet\packages\System.IO.Ports.5.0.0\lib\net461\System.IO.Ports.dll</HintPath>
     </Reference>
-    <Reference Include="TransbankPosSDK, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TransbankPosSDK.2.1.0\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
+    <Reference Include="mscorlib" />
+    <Reference Include="TransbankPosSDK">
+      <HintPath>..\packages\TransbankPosSDK.2.3.0-pre-002\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
