@@ -428,7 +428,6 @@
             this.btn_onepay.TabIndex = 23;
             this.btn_onepay.Text = "Pagar con Onepay";
             this.btn_onepay.UseVisualStyleBackColor = true;
-            this.btn_onepay.Click += new System.EventHandler(this.Btn_onepay_Click);
             // 
             // MainForm
             // 

@@ -284,27 +284,5 @@ namespace TransbankPosSDKExample
             p.Show();
             p.Focus();
         }
-
-        private void Btn_onepay_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (total > 0 && ShopingList_lst.Items.Count > 0)
-                {
-                    OnepayForm qr = new OnepayForm(total);
-                    qr.Show();
-                    qr.Focus();
-                    Clean_btn_Click(sender,e);
-                }
-                else
-                {
-                    MessageBox.Show("No hay elementos para cobrar o el total es 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch(Exception a)
-            {
-                MessageBox.Show("Error Procesando el Pago " + a.Message);
-            }
-        }
     }
 }

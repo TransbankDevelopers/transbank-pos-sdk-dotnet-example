@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="TransbankPosSDK">
-      <HintPath>..\packages\TransbankPosSDK.2.3.0-pre-002\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
+      <HintPath>..\packages\TransbankPosSDK.2.3.0\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
