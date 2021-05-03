@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using Transbank.POS;
-using Transbank.POS.Exceptions;
-using Transbank.POS.Utils;
-using Transbank.POS.Responses;
+using Transbank.POSIntegrado;
+using Transbank.Exceptions.CommonExceptions;
+using Transbank.Exceptions.IntegradoExceptions;
+using Transbank.Responses.CommonResponses;
+using Transbank.Responses.IntegradoResponses;
+using System.Threading.Tasks;
 
 namespace TransbankPosSDKExample
 {
@@ -33,7 +35,7 @@ namespace TransbankPosSDKExample
             InitializeComponent();
 
             PortName_lbl.Text = portName;
-            Port_ddown.DataSource = Serial.ListPorts();
+            Port_ddown.DataSource = POSIntegrado.Instance.ListPorts();
             portName = Port_ddown.SelectedItem.ToString();
             Price_lbl.Text = total.ToString();
             BuyItems = new List<Product>();
@@ -48,7 +50,10 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                if (POS.Instance.Poll())
+                Task<bool> pollResult = POSIntegrado.Instance.Poll();
+                pollResult.Wait();
+
+                if (pollResult.Result)
                 {
                     MessageBox.Show("POS is connected.", "Polling the POS");
                 }
@@ -66,7 +71,7 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                POS.Instance.OpenPort(portName);
+                POSIntegrado.Instance.OpenPort(portName);
                 PortName_lbl.Text = portName;
             } catch (TransbankException a)
             {
@@ -78,7 +83,7 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                POS.Instance.ClosePort();
+                POSIntegrado.Instance.ClosePort();
                 PortName_lbl.Text = "";
             } catch (TransbankException a)
             {
@@ -90,8 +95,10 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                LoadKeysResponse response = POS.Instance.LoadKeys();
-                if (response.Success)
+                Task<LoadKeysResponse> response = POSIntegrado.Instance.LoadKeys();
+                response.Wait();
+
+                if (response.Result.Success)
                 {
                     MessageBox.Show(response.ToString(), "Keys Loaded Successfully.");
                 }
@@ -104,8 +111,10 @@ namespace TransbankPosSDKExample
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try {
-                CloseResponse response = POS.Instance.Close();
-                if (response.Success)
+                Task<CloseResponse> response = POSIntegrado.Instance.Close();
+                response.Wait();
+
+                if (response.Result.Success)
                 {
                     MessageBox.Show(response.ToString(), "Register Closed Successfully.");
                 }
@@ -123,7 +132,7 @@ namespace TransbankPosSDKExample
                 DialogResult dialogResult = MessageBox.Show("Setting Normal Mode will disconect the POS\n Are You sure?", "Set Normal Mode", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    POS.Instance.SetNormalMode();
+                    POSIntegrado.Instance.SetNormalMode();
                     Disconnect_btn_Click(sender, e);
                 }
             } catch (TransbankException a)
@@ -219,9 +228,10 @@ namespace TransbankPosSDKExample
                 if (total > 0 && ShopingList_lst.Items.Count > 0)
                 {
                    string ticket = new Random().Next(0, 999999).ToString("D6");
-                   SaleResponse response = POS.Instance.Sale(total, ticket);
+                   Task<SaleResponse> response = POSIntegrado.Instance.Sale(total, ticket);
+                    response.Wait();
 
-                   MessageBox.Show(response.ToString());
+                   MessageBox.Show(response.Result.ToString());
                    Clean_btn_Click(sender, e);
                 }
                 else
@@ -243,8 +253,10 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                TotalsResponse response = POS.Instance.Totals();
-                if (response.Success)
+                Task<TotalsResponse> response = POSIntegrado.Instance.Totals();
+                response.Wait();
+
+                if (response.Result.Success)
                 {
                     MessageBox.Show(response.ToString(), "Totals obtained Successfully.");
                 }
@@ -259,8 +271,10 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                LastSaleResponse response = POS.Instance.LastSale();
-                if (response.Success)
+                Task<LastSaleResponse> response = POSIntegrado.Instance.LastSale();
+                response.Wait();
+
+                if (response.Result.Success)
                 {
                     MessageBox.Show(response.ToString(), "Last Sale obtained Successfully.");
                 }
