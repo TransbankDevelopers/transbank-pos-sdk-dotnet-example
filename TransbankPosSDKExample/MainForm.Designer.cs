@@ -57,6 +57,7 @@
             this.lastSaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesDetailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.Disconnect_btn = new System.Windows.Forms.Button();
             this.ShopingList_lst = new System.Windows.Forms.ListView();
             this.Item = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -65,6 +66,7 @@
             this.Pay_btn = new System.Windows.Forms.Button();
             this.Clean_btn = new System.Windows.Forms.Button();
             this.btn_onepay = new System.Windows.Forms.Button();
+            this.intermediateMsgTxtBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Cofee_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Juice_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cookies_img)).BeginInit();
@@ -203,7 +205,7 @@
             this.flowLayoutPanel1.Controls.Add(this.Burger_img);
             this.flowLayoutPanel1.Controls.Add(this.Salad_img);
             this.flowLayoutPanel1.Controls.Add(this.Fries_img);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 109);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 80);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(445, 302);
             this.flowLayoutPanel1.TabIndex = 11;
@@ -295,7 +297,8 @@
             this.getTotalsToolStripMenuItem,
             this.lastSaleToolStripMenuItem,
             this.refundToolStripMenuItem,
-            this.salesDetailToolStripMenuItem});
+            this.salesDetailToolStripMenuItem,
+            this.toolStripComboBox1});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
             this.connectionToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.connectionToolStripMenuItem.Text = "POS";
@@ -303,58 +306,68 @@
             // pollToolStripMenuItem
             // 
             this.pollToolStripMenuItem.Name = "pollToolStripMenuItem";
-            this.pollToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.pollToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.pollToolStripMenuItem.Text = "Check Connection";
             this.pollToolStripMenuItem.Click += new System.EventHandler(this.PollToolStripMenuItem_Click);
             // 
             // loadKeysToolStripMenuItem
             // 
             this.loadKeysToolStripMenuItem.Name = "loadKeysToolStripMenuItem";
-            this.loadKeysToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.loadKeysToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.loadKeysToolStripMenuItem.Text = "Load Keys";
             this.loadKeysToolStripMenuItem.Click += new System.EventHandler(this.LoadKeysToolStripMenuItem_Click);
             // 
             // CloseToolStripMenuItem
             // 
             this.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem";
-            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.CloseToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.CloseToolStripMenuItem.Text = "Close";
             this.CloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
             // setNormalModeToolStripMenuItem
             // 
             this.setNormalModeToolStripMenuItem.Name = "setNormalModeToolStripMenuItem";
-            this.setNormalModeToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.setNormalModeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.setNormalModeToolStripMenuItem.Text = "Set Normal Mode";
             this.setNormalModeToolStripMenuItem.Click += new System.EventHandler(this.SetNormalModeToolStripMenuItem_Click);
             // 
             // getTotalsToolStripMenuItem
             // 
             this.getTotalsToolStripMenuItem.Name = "getTotalsToolStripMenuItem";
-            this.getTotalsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.getTotalsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.getTotalsToolStripMenuItem.Text = "Get Totals";
             this.getTotalsToolStripMenuItem.Click += new System.EventHandler(this.getTotalsToolStripMenuItem_Click);
             // 
             // lastSaleToolStripMenuItem
             // 
             this.lastSaleToolStripMenuItem.Name = "lastSaleToolStripMenuItem";
-            this.lastSaleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.lastSaleToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.lastSaleToolStripMenuItem.Text = "Last Sale";
             this.lastSaleToolStripMenuItem.Click += new System.EventHandler(this.lastSaleToolStripMenuItem_Click);
             // 
             // refundToolStripMenuItem
             // 
             this.refundToolStripMenuItem.Name = "refundToolStripMenuItem";
-            this.refundToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.refundToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.refundToolStripMenuItem.Text = "Refund";
             this.refundToolStripMenuItem.Click += new System.EventHandler(this.refundToolStripMenuItem_Click);
             // 
             // salesDetailToolStripMenuItem
             // 
             this.salesDetailToolStripMenuItem.Name = "salesDetailToolStripMenuItem";
-            this.salesDetailToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.salesDetailToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.salesDetailToolStripMenuItem.Text = "Sales Detail";
             this.salesDetailToolStripMenuItem.Click += new System.EventHandler(this.salesDetailToolStripMenuItem_Click);
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.Text = "Intermediate Msg";
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // Disconnect_btn
             // 
@@ -429,11 +442,22 @@
             this.btn_onepay.Text = "Pagar con Onepay";
             this.btn_onepay.UseVisualStyleBackColor = true;
             // 
+            // intermediateMsgTxtBox
+            // 
+            this.intermediateMsgTxtBox.Location = new System.Drawing.Point(12, 388);
+            this.intermediateMsgTxtBox.Multiline = true;
+            this.intermediateMsgTxtBox.Name = "intermediateMsgTxtBox";
+            this.intermediateMsgTxtBox.ReadOnly = true;
+            this.intermediateMsgTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.intermediateMsgTxtBox.Size = new System.Drawing.Size(445, 46);
+            this.intermediateMsgTxtBox.TabIndex = 24;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 446);
+            this.Controls.Add(this.intermediateMsgTxtBox);
             this.Controls.Add(this.btn_onepay);
             this.Controls.Add(this.Clean_btn);
             this.Controls.Add(this.Pay_btn);
@@ -511,6 +535,8 @@
         private System.Windows.Forms.ToolStripMenuItem refundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesDetailToolStripMenuItem;
         private System.Windows.Forms.Button btn_onepay;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.TextBox intermediateMsgTxtBox;
     }
 }
 
