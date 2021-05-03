@@ -53,8 +53,8 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                Task<bool> pollResult = POSIntegrado.Instance.Poll();
-                pollResult.Wait(3000);
+                Task<bool> pollResult = Task.Run(async () => { return await POSIntegrado.Instance.Poll(); });
+                pollResult.Wait();
 
                 if (pollResult.Result)
                 {
@@ -135,7 +135,8 @@ namespace TransbankPosSDKExample
                 DialogResult dialogResult = MessageBox.Show("Setting Normal Mode will disconect the POS\n Are You sure?", "Set Normal Mode", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Task<bool> result = POSIntegrado.Instance.SetNormalMode();
+                    Task<bool> result = Task.Run(async () => { return await POSIntegrado.Instance.SetNormalMode(); });
+
                     result.Wait();
                     if (result.Result)
                     {
