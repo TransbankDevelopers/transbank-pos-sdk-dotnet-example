@@ -55,12 +55,13 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System.IO.Ports">
-      <HintPath>..\..\transbank-pos-sdk-dotnet\packages\System.IO.Ports.5.0.0\lib\net461\System.IO.Ports.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
-    <Reference Include="TransbankPosSDK">
-      <HintPath>..\packages\TransbankPosSDK.2.3.0\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
+    <Reference Include="System" />
+    <Reference Include="System.IO.Ports, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Ports.5.0.0\lib\net461\System.IO.Ports.dll</HintPath>
+    </Reference>
+    <Reference Include="TransbankPosSDK, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TransbankPosSDK.3.0.0\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

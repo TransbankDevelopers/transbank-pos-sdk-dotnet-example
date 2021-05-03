@@ -8,10 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Transbank.POS;
-using Transbank.POS.Exceptions;
-using Transbank.POS.Utils;
-using Transbank.POS.Responses;
+using Transbank.POSIntegrado;
+using Transbank.Exceptions.CommonExceptions;
+using Transbank.Responses.IntegradoResponses;
 
 namespace TransbankPosSDKExample
 {
@@ -31,7 +30,9 @@ namespace TransbankPosSDKExample
         {
             try
             {
-                var details = POS.Instance.Details(true);
+                Task<List<DetailResponse>> details = POSIntegrado.Instance.Details(true);
+                details.Wait();
+
                 MessageBox.Show("Impreso en POS", "Resultado Detalle de venta.");
                 this.Close();
             }
@@ -46,8 +47,10 @@ namespace TransbankPosSDKExample
             try
             {
                 string response = "";
-                var details = POS.Instance.Details(false);
-                foreach (Transbank.POS.Responses.DetailResponse detail in details)
+                Task<List<DetailResponse>> details = POSIntegrado.Instance.Details(false);
+                details.Wait();
+
+                foreach (DetailResponse detail in details.Result)
                 {
                     response += "Tipo de Tarjeta : " + detail.CardType + " Total : " + detail.Amount + "\n";
                 }

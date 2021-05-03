@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Transbank.POS;
-using Transbank.POS.Utils;
+using System.Threading.Tasks;
+using Transbank.POSIntegrado;
+using Transbank.Responses.CommonResponses;
+using Transbank.Responses.IntegradoResponses;
 
 namespace TransbankPosSDKConsoleExample
 {
@@ -9,7 +11,7 @@ namespace TransbankPosSDKConsoleExample
     {
         static void Main(string[] args)
         {
-            List<string> ports = Serial.ListPorts();
+            List<string> ports = POSIntegrado.Instance.ListPorts();
             string portName;
 
             int i = 0;
@@ -30,7 +32,7 @@ namespace TransbankPosSDKConsoleExample
                 return;
             }
 
-            POS.Instance.OpenPort(portName);
+            POSIntegrado.Instance.OpenPort(portName);
             Console.WriteLine("\nSerial port opened successfully");
             Console.WriteLine("Showing Menu");
             int key = ShowMenu();
@@ -41,7 +43,10 @@ namespace TransbankPosSDKConsoleExample
                 switch (key)
                 {
                     case 1:
-                        if (POS.Instance.Poll())
+                        Task<bool> pollResult = POSIntegrado.Instance.Poll();
+                        pollResult.Wait();
+
+                        if (pollResult.Result)
                             Console.WriteLine("Pos Connected");
                         else
                             Console.WriteLine("Pos NOT Connected");
@@ -50,8 +55,9 @@ namespace TransbankPosSDKConsoleExample
                     case 2:
                         try
                         {
-                            Transbank.POS.Responses.LoadKeysResponse response = POS.Instance.LoadKeys();
-                            Console.WriteLine(response);
+                            Task<LoadKeysResponse> response = POSIntegrado.Instance.LoadKeys();
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                             break;
                         }catch(Exception)
                         {
@@ -61,8 +67,9 @@ namespace TransbankPosSDKConsoleExample
                     case 3:
                         try
                         {
-                            Transbank.POS.Responses.CloseResponse response = POS.Instance.Close();
-                            Console.WriteLine(response);
+                            Task<CloseResponse> response = POSIntegrado.Instance.Close();
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                             break;
                         }
                         catch (Exception e)
@@ -76,8 +83,9 @@ namespace TransbankPosSDKConsoleExample
                         {
                             Console.WriteLine("Select 0 to send intermediate messages or any to continue without intermediate messages:\n");
                             print = Console.ReadKey().KeyChar.Equals("0");
-                            Transbank.POS.Responses.SaleResponse response = POS.Instance.Sale(2500, "101010", print);
-                            Console.WriteLine(response);
+                            Task<SaleResponse> response = POSIntegrado.Instance.Sale(2500, "101010", print);
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                             break;
                         }
                         catch (Exception e)
@@ -89,8 +97,9 @@ namespace TransbankPosSDKConsoleExample
                     case 5:
                         try
                         {
-                            Transbank.POS.Responses.TotalsResponse response = POS.Instance.Totals();
-                            Console.WriteLine(response);
+                            Task<TotalsResponse> response = POSIntegrado.Instance.Totals();
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                             break;
                         }
                         catch (Exception e)
@@ -102,8 +111,9 @@ namespace TransbankPosSDKConsoleExample
                     case 6:
                         try
                         {
-                            Transbank.POS.Responses.LastSaleResponse response = POS.Instance.LastSale();
-                            Console.WriteLine(response);
+                            Task<LastSaleResponse> response = POSIntegrado.Instance.LastSale();
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                             break;
                         }
                         catch (Exception e)
@@ -117,8 +127,9 @@ namespace TransbankPosSDKConsoleExample
                         string op = Console.ReadLine();
                         try
                         {
-                            Transbank.POS.Responses.RefundResponse response = POS.Instance.Refund(Convert.ToInt32(op));
-                            Console.WriteLine(response);
+                            Task<RefundResponse> response = POSIntegrado.Instance.Refund(Convert.ToInt32(op));
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                         }
                         catch (Exception e)
                         {
@@ -132,8 +143,9 @@ namespace TransbankPosSDKConsoleExample
                         print = Console.ReadKey().KeyChar.Equals("0");
                         try
                         {
-                            List<Transbank.POS.Responses.DetailResponse> details = POS.Instance.Details(print);
-                            foreach (Transbank.POS.Responses.DetailResponse detail in details)
+                            Task<List<DetailResponse>> details = POSIntegrado.Instance.Details(print);
+                            details.Wait();
+                            foreach (DetailResponse detail in details.Result)
                             {
                                 Console.WriteLine("Tipo de Tarjeta : " + detail.CardType + " Total : " + detail.Amount);
                             }
@@ -149,8 +161,9 @@ namespace TransbankPosSDKConsoleExample
                         {
                             Console.WriteLine("Select 0 to send intermediate messages or any to continue without intermediate messages:\n");
                             print = Console.ReadKey().KeyChar.Equals("0");
-                            Transbank.POS.Responses.MultiCodeSaleResponse response = POS.Instance.MultiCodeSale(6750, "101010", 597029414300, print);
-                            Console.WriteLine(response);
+                            Task<MultiCodeSaleResponse> response = POSIntegrado.Instance.MultiCodeSale(6750, "101010", 597029414300, print);
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                             break;
                         }
                         catch (Exception e)
@@ -163,8 +176,9 @@ namespace TransbankPosSDKConsoleExample
                         {
                             Console.WriteLine("Select 0 to get Voucher indo from POS or any to continue without voucher:\n");
                             print = Console.ReadKey().KeyChar.Equals("0");
-                            Transbank.POS.Responses.MultiCodeLastSaleResponse response = POS.Instance.MultiCodeLastSale(true);
-                            Console.WriteLine(response);
+                            Task<MultiCodeLastSaleResponse> response = POSIntegrado.Instance.MultiCodeLastSale(true);
+                            response.Wait();
+                            Console.WriteLine(response.Result);
                             break;
                         }
                         catch (Exception e)
@@ -178,8 +192,9 @@ namespace TransbankPosSDKConsoleExample
 
                         try
                         {
-                            List<Transbank.POS.Responses.DetailResponse> details = POS.Instance.Details(print);
-                            foreach (Transbank.POS.Responses.DetailResponse detail in details)
+                            Task<List<DetailResponse>> details = POSIntegrado.Instance.Details(print);
+                            details.Wait();
+                            foreach (DetailResponse detail in details.Result)
                             {
                                 Console.WriteLine("Tipo de Tarjeta : " + detail.CardType + " Total : " + detail.Amount);
                             }

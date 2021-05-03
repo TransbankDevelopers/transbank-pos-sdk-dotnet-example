@@ -8,10 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Transbank.POS;
-using Transbank.POS.Exceptions;
-using Transbank.POS.Utils;
-using Transbank.POS.Responses;
+using Transbank.POSIntegrado;
+using Transbank.Exceptions.CommonExceptions;
+using Transbank.Responses.CommonResponses;
 
 namespace TransbankPosSDKExample
 {
@@ -37,8 +36,10 @@ namespace TransbankPosSDKExample
             int op = Convert.ToInt32(opInputText.Text);
             try
             {
-                RefundResponse response = POS.Instance.Refund(op);
-                if (response.Success)
+                Task<RefundResponse> response = POSIntegrado.Instance.Refund(op);
+                response.Wait();
+
+                if (response.Result.Success)
                 {
                     MessageBox.Show(response.ToString(), "Refund Success.");
                     this.Close();
