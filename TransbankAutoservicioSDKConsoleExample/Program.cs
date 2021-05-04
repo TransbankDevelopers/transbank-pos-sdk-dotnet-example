@@ -28,6 +28,7 @@ namespace TransbankPosSDKConsoleExample
             {
                 switch (key)
                 {
+                    // Poll command
                     case 1:
                         Task<bool> pollResult = POSAutoservicio.Instance.Poll();
                         pollResult.Wait();
@@ -38,6 +39,7 @@ namespace TransbankPosSDKConsoleExample
                             Console.WriteLine("Pos NOT Connected");
                         break;
                         
+                    // Load Keys command
                     case 2:
                         try
                         {
@@ -50,7 +52,8 @@ namespace TransbankPosSDKConsoleExample
                         {
                             throw;
                         }
-
+                    
+                    // Initializataion command
                     case 3:
                         Task<bool> initializationResult = POSAutoservicio.Instance.Initialization();
                         initializationResult.Wait();
@@ -61,6 +64,7 @@ namespace TransbankPosSDKConsoleExample
                             Console.WriteLine("Pos NOT Initialized");
                         break;
 
+                    // Initialization response command
                     case 4:
                         try
                         {
@@ -75,6 +79,7 @@ namespace TransbankPosSDKConsoleExample
                             break;
                         }
                     
+                    // Sample sale command
                     case 5:
                         try
                         {
@@ -98,7 +103,8 @@ namespace TransbankPosSDKConsoleExample
                             Console.WriteLine("Error: " + e.Message);
                             break;
                         }
-
+                    
+                    // MultiCode sample sale command
                     case 6:
                         try
                         {
@@ -124,6 +130,7 @@ namespace TransbankPosSDKConsoleExample
                             break;
                         }
 
+                    // Last sale command
                     case 7:
                         try
                         {
@@ -140,6 +147,8 @@ namespace TransbankPosSDKConsoleExample
                             Console.WriteLine("Error: " + e.Message);
                             throw;
                         }
+
+                    // Refund command
                     case 8:
                         try
                         {
@@ -153,6 +162,8 @@ namespace TransbankPosSDKConsoleExample
                             throw;
                         }
                         break;
+
+                    // Close
                     case 9:
                         try
                         {
