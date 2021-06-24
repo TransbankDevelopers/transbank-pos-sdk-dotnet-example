@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\transbank-pos-sdk-dotnet\TransbankPosSDK\TransbankPosSDK.csproj" />
+    <PackageReference Include="TransbankPosSDK" Version="3.0.1" />
   </ItemGroup>
-
 </Project>

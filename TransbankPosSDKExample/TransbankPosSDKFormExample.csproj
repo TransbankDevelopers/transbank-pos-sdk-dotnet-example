@@ -82,8 +82,8 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib" />
-    <Reference Include="TransbankPosSDK, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TransbankPosSDK.3.0.0\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
+    <Reference Include="TransbankPosSDK">
+      <HintPath>..\packages\TransbankPosSDK.3.0.1\lib\netstandard2.0\TransbankPosSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
