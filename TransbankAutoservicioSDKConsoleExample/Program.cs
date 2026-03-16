@@ -148,23 +148,8 @@ namespace TransbankPosSDKConsoleExample
                             throw;
                         }
 
-                    // Refund command
-                    case 8:
-                        try
-                        {
-                            Task<RefundResponse> response = POSAutoservicio.Instance.Refund();
-                            response.Wait();
-                            Console.WriteLine(response.Result);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error: " + e.Message);
-                            throw;
-                        }
-                        break;
-
                     // Close
-                    case 9:
+                    case 8:
                         try
                         {
                             Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
@@ -202,8 +187,7 @@ namespace TransbankPosSDKConsoleExample
                 "\t(5)\t Sample Sale\n" +
                 "\t(6)\t Multicode Sample Sale\n" +
                 "\t(7)\t Get the Last Sale\n" +
-                "\t(8)\t Refund\n" +
-                "\t(9)\t Close\n" +
+                "\t(8)\t Close\n" +
                 "\t(0)\t Exit\n"
                 );
             int.TryParse(Console.ReadLine(), out int selected);
