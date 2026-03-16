@@ -9,10 +9,12 @@ namespace TransbankPosSDKConsoleExample
 {
     class Program
     {
+        const int DEFAULT_BAUDRATE = 115200;
+
         static void Main(string[] args)
         {
             string portName = SelectCom();
-            int baudrate = SelectBaudrate();
+            int baudrate = DEFAULT_BAUDRATE;
 
 
             POSAutoservicio.Instance.OpenPort(portName, baudrate);
@@ -223,57 +225,6 @@ namespace TransbankPosSDKConsoleExample
             while (!ports.Contains(portName));
 
             return portName;
-        }
-
-        private static int SelectBaudrate()
-        {
-            int baudrate = 0;
-            do
-            {
-                Console.WriteLine(
-                    "Select Baudrate:\n" +
-                    "\t(1)\t 2400\n" +
-                    "\t(2)\t 4800\n" +
-                    "\t(3)\t 9600\n" +
-                    "\t(4)\t 19200\n" +
-                    "\t(5)\t 38400\n" +
-                    "\t(6)\t 57600\n" +
-                    "\t(7)\t 115200"
-                );
-
-                int.TryParse(Console.ReadLine(), out int selected);
-
-                switch(selected)
-                {
-                    case 1:
-                        baudrate = 2400;
-                        break;
-                    case 2:
-                        baudrate = 4800;
-                        break;
-                    case 3:
-                        baudrate = 9600;
-                        break;
-                    case 4:
-                        baudrate = 19200;
-                        break;
-                    case 5:
-                        baudrate = 38400;
-                        break;
-                    case 6:
-                        baudrate = 57600;
-                        break;
-                    case 7:
-                        baudrate = 115200;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid option");
-                        break;
-                }
-            }
-            while (baudrate == 0);
-
-            return baudrate;
         }
 
         private static long SelectCommerceCode()
