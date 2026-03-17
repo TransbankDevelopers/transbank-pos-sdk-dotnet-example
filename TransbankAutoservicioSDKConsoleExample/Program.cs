@@ -22,159 +22,40 @@ namespace TransbankPosSDKConsoleExample
             Console.WriteLine("Showing Menu");
             int key = ShowMenu();
             Console.WriteLine("\n");
-            bool print = false;
-            bool voucher = false;
-            int amount = 0;
-            string ticket = "";
             do
             {
                 switch (key)
                 {
-                    // Poll command
                     case 1:
-                        Task<bool> pollResult = POSAutoservicio.Instance.Poll();
-                        pollResult.Wait();
-
-                        if (pollResult.Result)
-                            Console.WriteLine("Pos Connected");
-                        else
-                            Console.WriteLine("Pos NOT Connected");
+                        PollCommand();
                         break;
-                        
-                    // Load Keys command
                     case 2:
-                        try
-                        {
-                            Task<LoadKeysResponse> loadKeyResponse = POSAutoservicio.Instance.LoadKeys();
-                            loadKeyResponse.Wait();
-                            Console.WriteLine(loadKeyResponse.Result);
-                            break;
-                        }
-                        catch (Exception)
-                        {
-                            throw;
-                        }
-                    
-                    // Initializataion command
+                        LoadKeysCommand();
+                        break;
                     case 3:
-                        Task<bool> initializationResult = POSAutoservicio.Instance.Initialization();
-                        initializationResult.Wait();
-
-                        if (initializationResult.Result)
-                            Console.WriteLine("Pos Initialized");
-                        else
-                            Console.WriteLine("Pos NOT Initialized");
+                        InitializationCommand();
                         break;
-
-                    // Initialization response command
                     case 4:
-                        try
-                        {
-                            Task<InitializationResponse> response = POSAutoservicio.Instance.InitializationResponse();
-                            response.Wait();
-                            Console.WriteLine(response.Result);
-                            break;
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error: " + e.Message);
-                            break;
-                        }
-                    
-                    // Sample sale command
-                    case 5:
-                        try
-                        {
-                            Console.WriteLine("Enter amount");
-                            int.TryParse(Console.ReadLine(), out amount);
-                            Console.WriteLine("Enter ticket number");
-                            ticket = Console.ReadLine();
-                            Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
-                            voucher = Console.ReadKey().KeyChar == '1';
-                            Console.WriteLine();
-                            Console.WriteLine("Select 1 to send intermediate messages or any to continue without intermediate messages:\n");
-                            print = Console.ReadKey().KeyChar == '1';
-                            Console.WriteLine();
-                            Task<SaleResponse> response = POSAutoservicio.Instance.Sale(amount, ticket, voucher, print);
-                            response.Wait();
-                            Console.WriteLine(response.Result);
-                            break;
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error: " + e.Message);
-                            break;
-                        }
-                    
-                    // MultiCode sample sale command
-                    case 6:
-                        try
-                        {
-                            Console.WriteLine("Enter amount");
-                            int.TryParse(Console.ReadLine(), out amount);
-                            Console.WriteLine("Enter ticket number");
-                            ticket = Console.ReadLine();
-                            long commerceCode = SelectCommerceCode();
-                            Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
-                            voucher = Console.ReadKey().KeyChar == '1';
-                            Console.WriteLine();
-                            Console.WriteLine("Select 1 to send intermediate messages or any to continue without intermediate messages:\n");
-                            print = Console.ReadKey().KeyChar == '1';
-                            Console.WriteLine();
-                            Task<MultiCodeSaleResponse> response = POSAutoservicio.Instance.MultiCodeSale(amount, ticket, commerceCode, voucher, print);
-                            response.Wait();
-                            Console.WriteLine(response.Result);
-                            break;
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error: " + e.Message);
-                            break;
-                        }
-
-                    // Last sale command
-                    case 7:
-                        try
-                        {
-                            Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
-                            voucher = Console.ReadKey().KeyChar == '1';
-                            Console.WriteLine();
-                            Task<LastSaleResponse> response = POSAutoservicio.Instance.LastSale(voucher);
-                            response.Wait();
-                            Console.WriteLine(response.Result);
-                            break;
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error: " + e.Message);
-                            throw;
-                        }
-
-                    // Close
-                    case 8:
-                        try
-                        {
-                            Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
-                            voucher = Console.ReadKey().KeyChar == '1';
-                            Console.WriteLine();
-                            Task<CloseResponse> response = POSAutoservicio.Instance.Close(voucher);
-                            response.Wait();
-                            Console.WriteLine(response.Result);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error: " + e.Message);
-                            throw;
-                        }
+                        InitializationResponseCommand();
                         break;
-
+                    case 5:
+                        SaleCommand();
+                        break;
+                    case 6:
+                        MultiCodeSaleCommand();
+                        break;
+                    case 7:
+                        LastSaleCommand();
+                        break;
+                    case 8:
+                        CloseCommand();
+                        break;
                     default:
                         Console.WriteLine("Invalid Option");
                         break;
                 }
                 key = ShowMenu();
                 Console.WriteLine("\n");
-                print = false;
             } while (key != 0);
         }
 
@@ -289,6 +170,200 @@ namespace TransbankPosSDKConsoleExample
             while (commerceCode == 0);
 
             return commerceCode;
+        }
+
+        private static void PollCommand()
+        {
+            try
+            {
+                Task<bool> pollResult = POSAutoservicio.Instance.Poll();
+                pollResult.Wait();
+
+                if (pollResult.Result)
+                    Console.WriteLine("Pos Connected");
+                else
+                    Console.WriteLine("Pos NOT Connected");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        private static void LoadKeysCommand()
+        {
+            try
+            {
+                Task<LoadKeysResponse> loadKeyResponse = POSAutoservicio.Instance.LoadKeys();
+                loadKeyResponse.Wait();
+                Console.WriteLine(loadKeyResponse.Result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        private static void InitializationCommand()
+        {
+            try
+            {
+                Task<bool> initializationResult = POSAutoservicio.Instance.Initialization();
+                initializationResult.Wait();
+
+                if (initializationResult.Result)
+                    Console.WriteLine("Pos Initialized");
+                else
+                    Console.WriteLine("Pos NOT Initialized");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        private static void InitializationResponseCommand()
+        {
+            try
+            {
+                Task<InitializationResponse> response = POSAutoservicio.Instance.InitializationResponse();
+                response.Wait();
+                Console.WriteLine(response.Result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        private static void SaleCommand()
+        {
+            EventHandler<IntermediateResponse> intermediateResponseHandler = null;
+            bool print = false;
+
+            try
+            {
+                Console.WriteLine("Enter amount");
+                int.TryParse(Console.ReadLine(), out int amount);
+                Console.WriteLine("Enter ticket number");
+                string ticket = Console.ReadLine();
+                Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
+                bool voucher = Console.ReadKey().KeyChar == '1';
+                Console.WriteLine();
+                Console.WriteLine("Select 1 to send intermediate messages or any to continue without intermediate messages:\n");
+                print = Console.ReadKey().KeyChar == '1';
+                Console.WriteLine();
+
+                intermediateResponseHandler = (sender, e) =>
+                {
+                    Console.WriteLine("Intermediate function code received: " + e.FunctionCode);
+                    Console.WriteLine("Intermediate response code received: " + e.ResponseCode);
+                    Console.WriteLine("Message received: " + e.ResponseMessage);
+                };
+
+                if (print)
+                {
+                    POSAutoservicio.Instance.IntermediateResponseChange += intermediateResponseHandler;
+                }
+
+                Console.WriteLine();
+                Task<SaleResponse> response = POSAutoservicio.Instance.Sale(amount, ticket, voucher, print);
+                response.Wait();
+                Console.WriteLine(response.Result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+            finally
+            {
+                if (print && intermediateResponseHandler != null)
+                {
+                    POSAutoservicio.Instance.IntermediateResponseChange -= intermediateResponseHandler;
+                }
+            }
+        }
+
+        private static void MultiCodeSaleCommand()
+        {
+            EventHandler<IntermediateResponse> intermediateResponseHandler = null;
+            bool print = false;
+
+            try
+            {
+                Console.WriteLine("Enter amount");
+                int.TryParse(Console.ReadLine(), out int amount);
+                Console.WriteLine("Enter ticket number");
+                string ticket = Console.ReadLine();
+                long commerceCode = SelectCommerceCode();
+                Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
+                bool voucher = Console.ReadKey().KeyChar == '1';
+                Console.WriteLine();
+                Console.WriteLine("Select 1 to send intermediate messages or any to continue without intermediate messages:\n");
+                print = Console.ReadKey().KeyChar == '1';
+
+                intermediateResponseHandler = (sender, e) =>
+                {
+                    Console.WriteLine("Intermediate function code received: " + e.FunctionCode);
+                    Console.WriteLine("Intermediate response code received: " + e.ResponseCode);
+                    Console.WriteLine("Message received: " + e.ResponseMessage);
+                };
+
+                if (print)
+                {
+                    POSAutoservicio.Instance.IntermediateResponseChange += intermediateResponseHandler;
+                }
+
+                Console.WriteLine();
+                Task<MultiCodeSaleResponse> response = POSAutoservicio.Instance.MultiCodeSale(amount, ticket, commerceCode, voucher, print);
+                response.Wait();
+                Console.WriteLine(response.Result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+            finally
+            {
+                if (print && intermediateResponseHandler != null)
+                {
+                    POSAutoservicio.Instance.IntermediateResponseChange -= intermediateResponseHandler;
+                }
+            }
+        }
+
+        private static void LastSaleCommand()
+        {
+            try
+            {
+                Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
+                bool voucher = Console.ReadKey().KeyChar == '1';
+                Console.WriteLine();
+                Task<LastSaleResponse> response = POSAutoservicio.Instance.LastSale(voucher);
+                response.Wait();
+                Console.WriteLine(response.Result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+        }
+
+        private static void CloseCommand()
+        {
+            try
+            {
+                Console.WriteLine("Select 1 to send voucher in response or any to continue without voucher data:\n");
+                bool voucher = Console.ReadKey().KeyChar == '1';
+                Console.WriteLine();
+                Task<CloseResponse> response = POSAutoservicio.Instance.Close(voucher);
+                response.Wait();
+                Console.WriteLine(response.Result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
         }
     }
 }
